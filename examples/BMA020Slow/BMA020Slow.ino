@@ -1,9 +1,8 @@
 // -*- c++ -*-
-// Simple sketch to read out BMA020 using SoftI2C
+// Simple sketch to read out BMA020 using SlowSoftI2CMaster
 
 // Readout BMA020 chip
 
-// use low processor speed (you have to change the baud rate to 2400!) 
 
 #include <SlowSoftI2CMaster.h>
 #include <avr/io.h>

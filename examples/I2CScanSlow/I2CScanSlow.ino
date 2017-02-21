@@ -1,12 +1,11 @@
 // -*-c++-*-
 // Scan I2C bus for device responses
 
-// use ports usually used for hardware I2C
-
 #include <SlowSoftI2CMaster.h>
 #include <avr/io.h>
 
-SlowSoftI2CMaster si = SlowSoftI2CMaster(A4, A5);
+// use true as third arg, if you do not have external pullups
+SlowSoftI2CMaster si = SlowSoftI2CMaster(A4, A5, false);
 
 //------------------------------------------------------------------------------
 
