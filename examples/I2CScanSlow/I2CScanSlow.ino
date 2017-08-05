@@ -5,7 +5,7 @@
 #include <avr/io.h>
 
 // use true as third arg, if you do not have external pullups
-SlowSoftI2CMaster si = SlowSoftI2CMaster(A4, A5, false);
+SlowSoftI2CMaster si = SlowSoftI2CMaster(A4, A5, true);
 
 //------------------------------------------------------------------------------
 

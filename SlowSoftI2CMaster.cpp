@@ -17,8 +17,6 @@
    USA
 */
 
-
-
 #include <SlowSoftI2CMaster.h>
 
 SlowSoftI2CMaster::SlowSoftI2CMaster(uint8_t sda, uint8_t scl) {
