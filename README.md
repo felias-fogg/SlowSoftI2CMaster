@@ -29,7 +29,7 @@ However, here all parameters and options are not defined as compile-time constan
     // Simple sketch to read out one register of an I2C device
     #include <SlowSoftI2CMaster.h>
 
-    // create new instance with A4 as SDA, A4 as SCL and enable internal pullups
+    // create new instance with A4 as SDA, A5 as SCL and enable internal pullups
     SlowSoftI2CMaster si = SlowSoftI2CMaster(A4, A5, true);
 
     #define I2C_7BITADDR 0x68 // DS1307
