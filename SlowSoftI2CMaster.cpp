@@ -25,10 +25,10 @@ SlowSoftI2CMaster::SlowSoftI2CMaster(uint8_t sda, uint8_t scl) {
   _pullup = false;
 }
 
-SlowSoftI2CMaster::SlowSoftI2CMaster(uint8_t sda, uint8_t scl, bool internal_pullup) {
+SlowSoftI2CMaster::SlowSoftI2CMaster(uint8_t sda, uint8_t scl, bool pullup) {
   _sda = sda;
   _scl = scl;
-  _pullup = internal_pullup;
+  _pullup = pullup;
 }
 // Init function. Needs to be called once in the beginning.
 // Returns false if SDA or SCL are low, which probably means 
@@ -53,8 +53,13 @@ bool SlowSoftI2CMaster::i2c_start(uint8_t addr) {
 }
 
 // Try to start transfer until an ACK is returned
-void SlowSoftI2CMaster::i2c_start_wait(uint8_t addr) {
-  while (!i2c_start(addr)) i2c_stop();
+bool SlowSoftI2CMaster::i2c_start_wait(uint8_t addr) {
+  long retry = I2C_MAXWAIT;
+  while (!i2c_start(addr)) {
+    i2c_stop();
+    if (--retry == 0) return false;
+  }
+  return true;
 }
 
 // Repeated start function: After having claimed the bus with a start condition,
