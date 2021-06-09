@@ -97,6 +97,8 @@ bool SlowSoftI2CMaster::i2c_write(uint8_t value) {
   setHigh(_sda);
   setHigh(_scl);
   delayMicroseconds(DELAY/2);
+  while (!digitalRead(_scl))
+    delayMicroseconds(DELAY/2);
   uint8_t ack = digitalRead(_sda);
   setLow(_scl);
   delayMicroseconds(DELAY/2);  
